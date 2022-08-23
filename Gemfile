@@ -17,14 +17,13 @@ gem 'pg'
 gem 'devise_token_auth', git:'https://github.com/lynndylanhurley/devise_token_auth'
 
 group :development, :test do
-
+  gem 'rspec-rails'
+  gem 'pry'
   gem "debug", platforms: %i[ mri mingw x64_mingw ]
 end
 
 group :development do
   gem "web-console"
-  gem 'rspec-rails'
-  gem 'pry'
 end
 
 group :test do
