@@ -1,6 +1,6 @@
 class V1::ProductsController < ApplicationController
   before_action :authenticate_user!, only: [:new, :create, :edit, :update]
-  before_action :set_product, only: [:edit, :update]
+  before_action :set_product, only: [:edit, :update, :destroy]
 
   def new
     @product = Product.new
@@ -39,6 +39,11 @@ class V1::ProductsController < ApplicationController
     else
       render :json => @product.errors,:status => :unprocessable_entity
     end
+  end
+
+  def destroy
+    @product.destroy
+    render :json => "Product #{@product.id} deleted"
   end
 
   private
