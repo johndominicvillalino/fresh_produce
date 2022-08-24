@@ -9,4 +9,7 @@ class User < ActiveRecord::Base
   include DeviseTokenAuth::Concerns::User
 
   enum role: %i(buyer farmer)
+
+  has_many :product_boxes
+  has_many :product_adopts
 end
