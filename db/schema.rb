@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_08_24_135659) do
+ActiveRecord::Schema[7.0].define(version: 2022_08_24_142625) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -19,7 +19,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_08_24_135659) do
     t.string "name"
     t.integer "price"
     t.integer "minimum_order"
-    t.string "qty_measuremnet"
+    t.string "qty_measurement"
     t.integer "units_available"
     t.date "harvest_time"
     t.string "product_type"

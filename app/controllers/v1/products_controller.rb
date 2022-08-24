@@ -25,6 +25,6 @@ class V1::ProductsController < ApplicationController
   private
 
   def product_params
-    params.require(:product).permit(:image, :name, :price, :minimum_order, :qty_measurement, :units_available, :harvest_time, :product_type, :estimated_delivery, :user_id)
+    params.permit(:image, :name, :price, :minimum_order, :qty_measurement, :units_available, :harvest_time, :product_type, :estimated_delivery, :user_id)
   end
 end

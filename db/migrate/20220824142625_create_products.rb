@@ -5,7 +5,7 @@ class CreateProducts < ActiveRecord::Migration[7.0]
       t.string :name
       t.integer :price
       t.integer :minimum_order
-      t.string :qty_measuremnet
+      t.string :qty_measurement
       t.integer :units_available
       t.date :harvest_time
       t.string :product_type
