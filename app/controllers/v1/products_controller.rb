@@ -8,17 +8,21 @@ class V1::ProductsController < ApplicationController
   end
 
   def create
-    @product = Product.create(product_params)
-    @product.user_id = current_user.id
+    if current_user.role == "farmer"
+      @product = Product.create(product_params)
+      @product.user_id = current_user.id
 
-    respond_to do |format|
-      if @product.save
-        format.json  { render :json => @product,
-                      status: :created }
-      else
-        format.json  { render :json => @product.errors,
-                      :status => :unprocessable_entity }
+      respond_to do |format|
+        if @product.save
+          format.json  { render :json => @product,
+                        status: :created }
+        else
+          format.json  { render :json => @product.errors,
+                        :status => :unprocessable_entity }
+        end
       end
+    else
+      render :json => "User Not Authorized"
     end
   end
 
