@@ -1,5 +1,6 @@
 class V1::ProductsController < ApplicationController
-  before_action :authenticate_user!, only: [:new, :create]
+  before_action :authenticate_user!, only: [:new, :create, :edit, :update]
+  before_action :set_product, only: [:edit, :update]
 
   def new
     @product = Product.new
@@ -26,7 +27,25 @@ class V1::ProductsController < ApplicationController
     end
   end
 
+  def edit
+   
+    render :json => @product
+  end 
+
+  def update
+   
+    if @product.update(product_params)
+      render :json => @product
+    else
+      render :json => @product.errors,:status => :unprocessable_entity
+    end
+  end
+
   private
+
+  def set_product
+    @product = Product.find(params[:id])
+  end
 
   def product_params
     params.permit(:image, :name, :price, :minimum_order, :qty_measurement, :units_available, :harvest_time, :product_type, :estimated_delivery, :user_id)
