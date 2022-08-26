@@ -1,5 +1,5 @@
 class V1::ProductsController < ApplicationController
-  before_action :authenticate_user!, only: [:new, :create, :edit, :update, :show]
+  before_action :authenticate_user!, only: [:new, :create, :edit, :update, :show, :all_your_products]
   before_action :set_product, only: [:edit, :update, :destroy]
 
   def index 
@@ -7,11 +7,9 @@ class V1::ProductsController < ApplicationController
     render json: @products, status:200
   end
 
-  def show
-    
-    binding.pry
-    
-    @product = Product.find(params[:id])
+  def all_your_products
+    @product = current_user.products
+    render json: @product
   end
 
 

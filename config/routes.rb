@@ -6,5 +6,6 @@ Rails.application.routes.draw do
   # root "articles#index"
   namespace :v1 do
     resources :products
+    get 'my-products', to: 'products#all_your_products', as: 'my_products'
   end
 end
