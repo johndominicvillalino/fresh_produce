@@ -1,10 +1,17 @@
 class V1::ProductsController < ApplicationController
-  before_action :authenticate_user!, only: [:new, :create, :edit, :update]
+  before_action :authenticate_user!, only: [:new, :create, :edit, :update, :show]
   before_action :set_product, only: [:edit, :update, :destroy]
 
   def index 
     @products = Product.all
     render json: @products, status:200
+  end
+
+  def show
+    
+    binding.pry
+    
+    @product = Product.find(params[:id])
   end
 
 
