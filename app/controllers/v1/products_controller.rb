@@ -2,6 +2,12 @@ class V1::ProductsController < ApplicationController
   before_action :authenticate_user!, only: [:new, :create, :edit, :update]
   before_action :set_product, only: [:edit, :update, :destroy]
 
+  def index 
+    @products = Product.all
+    render json: @products, status:200
+  end
+
+
   def new
     @product = Product.new
     @product.user_id = current_user.id
