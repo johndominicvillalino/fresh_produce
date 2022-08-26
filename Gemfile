@@ -18,6 +18,7 @@ gem 'devise_token_auth', git:'https://github.com/lynndylanhurley/devise_token_au
 
 group :development, :test do
   gem 'rspec-rails'
+  gem 'factory_bot_rails'
   gem 'pry'
   gem "debug", platforms: %i[ mri mingw x64_mingw ]
 end

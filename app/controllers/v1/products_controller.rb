@@ -1,6 +1,19 @@
 class V1::ProductsController < ApplicationController
-  before_action :authenticate_user!, only: [:new, :create, :edit, :update]
+  load_and_authorize_resource
+  before_action :authenticate_user!, only: [:new, :create, :edit, :update, :show, :all_your_products]
   before_action :set_product, only: [:edit, :update, :destroy]
+   
+
+  def index 
+    @products = Product.all
+    render json: @products, status:200
+  end
+
+  def all_your_products
+    @products = current_user.products
+    render json: @products
+  end
+
 
   def new
     @product = Product.new
@@ -23,7 +36,7 @@ class V1::ProductsController < ApplicationController
         end
       end
     else
-      render :json => "User Not Authorized"
+      render :json => "User Not Authorized" 
     end
   end
 
@@ -53,6 +66,6 @@ class V1::ProductsController < ApplicationController
   end
 
   def product_params
-    params.permit(:image, :name, :price, :minimum_order, :qty_measurement, :units_available, :harvest_time, :product_type, :estimated_delivery, :user_id)
+    params.permit(:id, :image, :name, :price, :minimum_order, :qty_measurement, :units_available, :harvest_time, :product_type, :estimated_delivery, :user_id)
   end
 end
