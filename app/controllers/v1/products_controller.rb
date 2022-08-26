@@ -1,7 +1,8 @@
 class V1::ProductsController < ApplicationController
+  load_and_authorize_resource
   before_action :authenticate_user!, only: [:new, :create, :edit, :update, :show, :all_your_products]
   before_action :set_product, only: [:edit, :update, :destroy]
-  load_and_authorize_resource 
+   
 
   def index 
     @products = Product.all
@@ -9,8 +10,8 @@ class V1::ProductsController < ApplicationController
   end
 
   def all_your_products
-    @product = current_user.products
-    render json: @product
+    @products = current_user.products
+    render json: @products
   end
 
 

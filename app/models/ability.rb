@@ -7,10 +7,15 @@ class Ability
     # Define abilities for the user here. For example:
     #
   
-    can :update, Product, :user_id => user.id
-    
+    can :index, Product
+
+    return unless user.present?
+
+    can :update, Product, user_id: user.id
+
     if user.role == 'farmer'
       can :create, Product
+      can :all_your_products, Product, user_id: user.id
     end
   
     #   return unless user.present?
