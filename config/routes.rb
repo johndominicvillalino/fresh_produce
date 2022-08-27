@@ -8,5 +8,8 @@ Rails.application.routes.draw do
     resources :products
     get 'my-products', to: 'products#all_your_products', as: 'my_products'
     post 'orders', to: 'orders#complete_order', as: 'complete_order'
+    post 'cart', to: 'carts#add_to_cart', as: 'add_cart'
+    get 'cart', to: 'carts#cart_items', as: 'cart_items'
+    delete 'cart/:id', to: 'carts#remove_cart_item', as: 'remove_cart_item'
   end
 end
