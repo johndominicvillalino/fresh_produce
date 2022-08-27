@@ -7,6 +7,6 @@ Rails.application.routes.draw do
   namespace :v1 do
     resources :products
     get 'my-products', to: 'products#all_your_products', as: 'my_products'
-    post 'orders', to: 'orders#create', as: 'order'
+    post 'orders', to: 'orders#complete_order', as: 'complete_order'
   end
 end
