@@ -13,6 +13,7 @@ class V1::OrdersController < ApplicationController
             orders.map{|o| o[:order_id] = order.id}
             cart_items = orders.map{|p| p[:product_id]}
             OrderedItem.insert_all(orders)
+            
             Cart.where(:product_id => cart_items).destroy_all
             render json: 'pass'
         else
@@ -20,6 +21,12 @@ class V1::OrdersController < ApplicationController
         end
        
     end
+
+    def my_orders
+        @orders = current_user.orders
+        render json: @orders
+    end
+
 
     private
     def order_params    
