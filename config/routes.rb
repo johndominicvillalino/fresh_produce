@@ -7,5 +7,10 @@ Rails.application.routes.draw do
   namespace :v1 do
     resources :products
     get 'my-products', to: 'products#all_your_products', as: 'my_products'
+    post 'orders', to: 'orders#complete_order', as: 'complete_order'
+    post 'cart', to: 'carts#add_to_cart', as: 'add_cart'
+    get 'cart', to: 'carts#cart_items', as: 'cart_items'
+    delete 'cart/:id', to: 'carts#remove_cart_item', as: 'remove_cart_item'
+    get 'orders', to: 'orders#my_orders', as: 'my_orders'
   end
 end
