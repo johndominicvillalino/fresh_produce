@@ -12,9 +12,16 @@ class V1::OrdersController < ApplicationController
         if order.save
             orders.map{|o| o[:order_id] = order.id}
             cart_items = orders.map{|p| p[:product_id]}
-            OrderedItem.insert_all(orders)
-            
+
+            orders.each do |ordr| 
+                
+                @s = OrderedItem.new(ordr)
+                @s.save
+
+            end
             Cart.where(:product_id => cart_items).destroy_all
+            
+
             render json: 'pass'
         else
             render json: 'fail', status: :unprocessable_entity
