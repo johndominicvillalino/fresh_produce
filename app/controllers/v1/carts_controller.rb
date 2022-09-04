@@ -12,7 +12,7 @@ class V1::CartsController < ApplicationController
      item[:user_id] = current_user.id
      add_item = Cart.new(item)
      if add_item.save
-        render json: 'added'
+        render json: add_item.id
      else
         render json: 'failed'
      end
