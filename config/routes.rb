@@ -12,5 +12,6 @@ Rails.application.routes.draw do
     get 'cart', to: 'carts#cart_items', as: 'cart_items'
     delete 'cart/:id', to: 'carts#remove_cart_item', as: 'remove_cart_item'
     get 'orders', to: 'orders#my_orders', as: 'my_orders'
+    get 'sold', to: 'solds#all_sold', as: 'my_solds'
   end
 end
