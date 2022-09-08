@@ -9,6 +9,14 @@ class V1::CartsController < ApplicationController
 
     def add_to_cart
      item = cart_params
+     
+     found = Cart.all.where(:product_id => item[:product_id])
+
+     if(found.length > 0) 
+        foundItem = found.first
+        foundItem[:qty] += item[:qty]
+        foundItem.save
+     else
      item[:user_id] = current_user.id
      add_item = Cart.new(item)
      if add_item.save
@@ -16,6 +24,7 @@ class V1::CartsController < ApplicationController
      else
         render json: 'failed'
      end
+    end
     end
 
     def remove_cart_item
