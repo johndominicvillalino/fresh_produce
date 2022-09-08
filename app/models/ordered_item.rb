@@ -9,7 +9,7 @@ class OrderedItem < ApplicationRecord
             x = sold.first
         else
 
-        @t = Sold.new(product_id:product_id, user_id: seller_id, qty: quantity, price: total, order_reference: id)    
+        @t = Sold.new(product_id:product_id, user_id: seller_id, qty: qty, price: total, order_reference: id)    
         @t.save
         end
 

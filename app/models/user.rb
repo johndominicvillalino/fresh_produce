@@ -11,5 +11,6 @@ class User < ActiveRecord::Base
   has_many :orders
   has_many :cart  
   has_many :sold
+
   enum role: %i(farmer buyer)
 end
