@@ -29,8 +29,9 @@ class V1::OrdersController < ApplicationController
     end
 
     def my_orders
+        
         @orders = current_user.orders
-        render json: @orders
+        render json: @orders,include: :ordered_items
     end
 
 
