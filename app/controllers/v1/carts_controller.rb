@@ -16,6 +16,7 @@ class V1::CartsController < ApplicationController
         foundItem = found.first
         foundItem[:qty] += item[:qty]
         foundItem.save
+        render json: foundItem.id
      else
      item[:user_id] = current_user.id
      add_item = Cart.new(item)

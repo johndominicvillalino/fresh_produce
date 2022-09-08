@@ -14,7 +14,6 @@ class V1::OrdersController < ApplicationController
             cart_items = orders.map{|p| p[:product_id]}
 
             orders.each do |ordr| 
-                
                 @s = OrderedItem.new(ordr)
                 @s.save
 
@@ -37,7 +36,7 @@ class V1::OrdersController < ApplicationController
 
     private
     def order_params    
-        params.permit(:orders => [:price,:seller_id,:qty_measurement,:estimated_delivery,:harvest_time,:name,:product_id,:total])
+        params.permit(:orders => [:price,:seller_id,:qty_measurement,:estimated_delivery,:harvest_time,:name,:product_id,:total,:qty])
     end
 
 end
