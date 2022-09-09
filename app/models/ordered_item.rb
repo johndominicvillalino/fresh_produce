@@ -7,6 +7,8 @@ class OrderedItem < ApplicationRecord
        
         if sold.length > 0
             x = sold.first
+            x.status = 'paid'
+            x.save
         else
 
         @t = Sold.new(product_id:product_id, user_id: seller_id, qty: qty, price: total, order_reference: id)    

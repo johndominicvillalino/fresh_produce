@@ -33,11 +33,13 @@ class V1::OrdersController < ApplicationController
         @orders = current_user.orders
         render json: @orders,include: :ordered_items
     end
-
-
+  
+ 
     private
     def order_params    
         params.permit(:orders => [:price,:seller_id,:qty_measurement,:estimated_delivery,:harvest_time,:name,:product_id,:total,:qty])
     end
+
+
 
 end

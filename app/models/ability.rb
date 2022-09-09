@@ -20,6 +20,7 @@ class Ability
 
     can :all_sold, Sold, user_id: user.id
 
+
     if user.role == 'farmer'
       can :create, Product
       can :all_your_products, Product, user_id: user.id

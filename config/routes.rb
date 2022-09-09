@@ -14,5 +14,6 @@ Rails.application.routes.draw do
     get 'orders', to: 'orders#my_orders', as: 'my_orders'
     get 'sold', to: 'solds#all_sold', as: 'my_solds'
     get 'farmers', to: 'farmers#get_all_farmers', as: 'all_farmers'
+    post 'pay-now', to: 'ordered_items#pay_now', as: 'pay_now'
   end
 end
